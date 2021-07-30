@@ -1,0 +1,22 @@
+{
+  "name": "common-word-identifier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "keyword-grabber.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alequin/common-word-identifier.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alequin/common-word-identifier/issues"
+  },
+  "homepage": "https://github.com/Alequin/common-word-identifier#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
