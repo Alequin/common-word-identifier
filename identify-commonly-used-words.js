@@ -1,13 +1,12 @@
-const flatMap = require("lodash/flatMap");
-const map = require("lodash/map");
-const uniq = require("lodash/uniq");
-const wordBlockList = require("./src/word-blocklist.json");
-const {
-  maxWordLength,
-  maxWordOccurrenceCount,
-} = require("./environment-variables.json");
+import lodash from "lodash";
+import { readJsonFile } from "./src/read-json-file.js";
 
-const textsToInspect = require("./texts-to-inspect.json");
+const { flatMap, map, uniq } = lodash;
+const { maxWordLength, maxWordOccurrenceCount } = readJsonFile(
+  "./environment-variables.json"
+);
+const wordBlockList = readJsonFile("./src/word-blocklist.json");
+const textsToInspect = readJsonFile("./texts-to-inspect.json");
 
 const identifyCommonlyUsedWords = () => {
   const wordCounts = flatMap(textsToInspect, (text) => {
