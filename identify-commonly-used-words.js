@@ -1,13 +1,17 @@
 import lodash from "lodash";
 import {
-  shouldIncludeWordInFinalOutput,
   sortByOccurrenceCountDescending,
   splitWords,
 } from "./src/utilities.js";
+import wordBlockList from "./src/word-blocklist.json";
 
 const { flatMap, map, uniq } = lodash;
 
-export const identifyCommonlyUsedWords = (textsFilePath) => {
+export const identifyCommonlyUsedWords = (
+  textsFilePath,
+  minWordLength = 0,
+  minWordOccurrenceCount = 0
+) => {
   const textsToInspect = require(textsFilePath);
 
   const wordCounts = flatMap(textsToInspect, (text) => {
@@ -23,10 +27,15 @@ export const identifyCommonlyUsedWords = (textsFilePath) => {
     word,
     count,
   }))
-    .filter(({ word, count }) => shouldIncludeWordInFinalOutput(word, count))
+    .filter(
+      ({ word, count }) =>
+        word.length >= minWordLength &&
+        count >= minWordOccurrenceCount &&
+        !wordBlockList.includes(word)
+    )
     .sort(sortByOccurrenceCountDescending);
 };
 
 if (require.main === module) {
-  console.log(identifyCommonlyUsedWords("./texts-to-inspect.json"));
+  console.log(identifyCommonlyUsedWords("./texts-to-inspect.json", 3, 0));
 }
