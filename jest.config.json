@@ -1,0 +1,8 @@
+{
+  "moduleFileExtensions": ["js"],
+  "transform": {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.mjs$": "babel-jest"
+  },
+  "testRegex": "test.js$"
+}

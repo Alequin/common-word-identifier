@@ -1,9 +1,8 @@
-import { readJsonFile } from "./read-json-file.js";
-
-const { maxWordLength, maxWordOccurrenceCount } = readJsonFile(
-  "./environment-variables.json"
-);
-const wordBlockList = readJsonFile("./src/word-blocklist.json");
+import {
+  maxWordLength,
+  maxWordOccurrenceCount,
+} from "../environment-variables.json";
+import wordBlockList from "./word-blocklist.json";
 
 const doesWordIncludeEnoughCharacters = (word) => word.length >= maxWordLength;
 

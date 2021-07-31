@@ -1,5 +1,4 @@
 import lodash from "lodash";
-import { readJsonFile } from "./src/read-json-file.js";
 import {
   shouldIncludeWordInFinalOutput,
   sortByOccurrenceCountDescending,
@@ -8,9 +7,9 @@ import {
 
 const { flatMap, map, uniq } = lodash;
 
-const textsToInspect = readJsonFile("./texts-to-inspect.json");
+export const identifyCommonlyUsedWords = (textsFilePath) => {
+  const textsToInspect = require(textsFilePath);
 
-const identifyCommonlyUsedWords = () => {
   const wordCounts = flatMap(textsToInspect, (text) => {
     const words = splitWords(text).map((word) => word.toLowerCase());
     return uniq(words); // words appearing in the same text twice only count once towards the overall count
@@ -28,4 +27,6 @@ const identifyCommonlyUsedWords = () => {
     .sort(sortByOccurrenceCountDescending);
 };
 
-console.log(identifyCommonlyUsedWords());
+if (require.main === module) {
+  console.log(identifyCommonlyUsedWords("./texts-to-inspect.json"));
+}

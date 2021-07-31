@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "keyword-grabber.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./identify-commonly-used-words"
+    "test": "jest",
+    "start": "npx babel-node ./identify-commonly-used-words"
   },
   "repository": {
     "type": "git",
@@ -17,8 +16,13 @@
   "bugs": {
     "url": "https://github.com/Alequin/common-word-identifier/issues"
   },
-  "homepage": "https://github.com/Alequin/common-word-identifier#readme",
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.8",
+    "jest": "^27.0.6"
   }
 }
